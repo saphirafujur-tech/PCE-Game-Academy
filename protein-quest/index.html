@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#122b37">
+<title>Protein Quest · Misión Plegamiento | Biología Y12 PCE</title>
+<style>
+:root{--bg:#0d202c;--card:#173744;--card2:#1d4451;--ink:#f2fffa;--dim:#bbd5d3;--mint:#aff1d0;--lime:#e1ff9d;--blue:#a9d8ff;--pink:#ffc5dc;--gold:#ffe2a2;--line:#396370;--red:#ffadad}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% -10%,#275e56,transparent 40%),radial-gradient(circle at 0% 110%,#273d69,transparent 30%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.page{max-width:1300px;padding:24px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.logo{font-weight:1000;letter-spacing:.04em;font-size:21px;display:flex;align-items:center;gap:12px}.logo-icon{font-size:32px;background:#b2f3cf;color:#08232a;border-radius:15px;padding:6px 12px}.kicker{font-size:11px;letter-spacing:.12em;color:var(--mint);font-weight:900;text-transform:uppercase}
+.pills{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid #4a6d74;background:#17323f;border-radius:40px;padding:9px 13px;font-weight:800;font-size:13px}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 230px;gap:16px}.panel{border:1px solid var(--line);background:linear-gradient(155deg,#1a3b48,#112d39);border-radius:25px;padding:20px;box-shadow:0 10px 40px #04121b70}
+.panel h2{font-size:18px;margin:3px 0 16px}.mission-item{display:flex;gap:10px;align-items:center;margin:8px 0;padding:11px 8px;border-radius:13px;color:#bed2d0;border:1px solid transparent}
+.mission-item.current{background:#2a5559;border-color:#a4e9cc;color:white}.mission-item.done{color:#b5f0ca}.mission-item .num{width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:#294b55;display:grid;place-items:center;font-size:18px}
+.mission-item.current .num{background:var(--mint);color:#11333a}.mission-item b{font-size:12px;display:block}.mission-item small{font-size:10px;display:block;color:#afc8c8}
+.stage{min-height:590px;background:radial-gradient(ellipse at top,#24544f,#12343f 60%,#102a35);position:relative;overflow:hidden}.stage:before{position:absolute;inset:0;content:"";pointer-events:none;opacity:.12;background-image:radial-gradient(white 1px,transparent 1px);background-size:30px 30px}.stage>*{position:relative}
+.tag{display:inline-block;background:var(--lime);color:#153139;border-radius:40px;padding:6px 11px;font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.05em}
+h1{font-size:clamp(30px,4vw,45px);line-height:1.05;letter-spacing:-.04em;margin:21px 0 10px}p{margin:8px 0 14px;color:var(--dim)}
+.art{min-height:176px;display:flex;justify-content:center;align-items:center;gap:8px;margin:19px 0;background:radial-gradient(ellipse,#2c6261,#173f48 65%,#15343e);border:1px solid #477376;border-radius:18px;padding:18px;text-align:center;flex-wrap:wrap}
+.art .float{font-size:60px;display:block;animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px)}}.art .chem{font-weight:900;letter-spacing:.01em;font-size:clamp(12px,1.7vw,18px);color:#e5ffe8}
+.beads{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}.bead{min-width:46px;height:46px;padding:0 7px;display:grid;place-items:center;border-radius:14px;background:#95e9c5;color:#09343a;font-weight:900;box-shadow:0 4px 0 #366f68}
+.bead:nth-child(2n){background:#ffc3d2}.bead:nth-child(3n){background:#fae3a1}.bead:nth-child(4n){background:#a6d7ff}.dash{font-size:28px;color:#e1ff9d}
+.question{font-size:17px;font-weight:850;margin:18px 0 14px;color:#fff}.choices{display:grid;grid-template-columns:1fr 1fr;gap:11px}.answer,.action,.small-btn{border:1px solid #558089;border-radius:14px;background:#28505c;color:#fff;padding:13px 12px;font-weight:800;min-height:50px;text-align:left;transition:.15s}.answer:hover,.action:hover,.small-btn:hover{border-color:var(--lime);background:#376573;transform:translateY(-1px)}
+.action{background:var(--lime);border-color:var(--lime);color:#143339;text-align:center}.small-btn{text-align:center;min-height:41px;padding:9px 12px;font-size:13px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.buttons button{flex:1}.primary{background:var(--lime);color:#133238;border-color:var(--lime)}
+.msg{padding:12px 14px;background:#264e55;border:1px solid #6ca4a1;border-radius:13px;margin:15px 0 0;color:#e9fff5;font-size:14px}.msg.bad{background:#573f4b;border-color:#a66c7b;color:#ffe6e9}.msg.good{background:#2a5645;border-color:#84c999;color:#eaffd4}
+.bar{height:9px;background:#365b65;border-radius:20px;overflow:hidden;margin:15px 0}.bar span{display:block;background:linear-gradient(90deg,var(--mint),var(--lime));height:100%;transition:.25s}
+.note{font-size:13px;border-top:1px dashed var(--line);padding-top:16px;margin-top:20px;color:var(--dim)}.note strong{color:var(--lime)}
+.badge-list{display:flex;flex-wrap:wrap;gap:8px}.mini{border:1px solid #52757a;background:#24515a;border-radius:10px;padding:7px 10px;font-weight:800}
+.choice-token{min-width:70px;min-height:56px;text-align:center;font-size:18px}.slot{width:58px;height:58px;border:2px dashed #79afac;border-radius:13px;display:grid;place-items:center;color:#dbfff7;font-size:21px;font-weight:900;background:#173a46}
+.previews{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}.chain{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.details{margin-top:12px;color:#defbdc;font-size:13px}.level-done{font-size:60px;text-align:center}.name{width:100%;border:1px solid #7aa7a0;padding:12px;background:#0b2835;color:#fff;border-radius:12px}
+.footer{color:#9cbbb7;font-size:12px;text-align:center;margin:22px 0 4px}
+@media(max-width:1080px){.layout{grid-template-columns:205px 1fr}.right{grid-column:1/-1}.right .notes{display:flex;gap:22px;flex-wrap:wrap}}
+@media(max-width:700px){.page{padding:10px}.top{padding:8px}.layout{display:flex;flex-direction:column}.panel{width:100%;padding:16px}.sidebar{min-height:0}.sidebar .missions{display:grid;grid-template-columns:1fr 1fr;gap:3px}.mission-item{margin:0}.stage{min-height:0}.choices{grid-template-columns:1fr}h1{font-size:31px}.art{min-height:125px}.art .float{font-size:46px}}
+@media print{body{background:white;color:black}.top,.sidebar,.right,.buttons,.footer,.question,.art,.bar,.msg{display:none!important}.layout{display:block}.stage{background:white;box-shadow:none;border:0}.certificate{color:#17323a;border:6px double #367c65;padding:30px;margin-top:80px;text-align:center}.certificate p{color:#333}}
+</style>
+</head>
+<body>
+<div id="app" class="page"></div>
+<script>
+(function(){
+"use strict";
+var missions=[
+["🧪","Fábrica de péptidos","Enlace peptídico","Combina los grupos funcionales y descubre qué molécula se desprende."],
+["🔡","Código de aminoácidos","Estructura primaria","Reconstruye la secuencia de una cadena de N-terminal a C-terminal."],
+["🌀","Hélices y láminas","Estructura secundaria","Reconoce las formas locales y las interacciones que las estabilizan."],
+["🧲","El misterio del plegamiento","Estructura terciaria","Investiga cuatro fuerzas que mantienen una proteína plegada."],
+["🩸","Construye hemoglobina","Estructura cuaternaria","Ensamblarás las cuatro subunidades de la hemoglobina adulta (HbA)."],
+["🚨","Salva el laboratorio","Reto final PCE","Resuelve cinco situaciones competenciales y obtén el diploma."]
+];
+var secondary=[
+["Una región de la cadena se enrolla formando una espiral. ¿Qué estructura es?",["Hélice α","Lámina β","Estructura cuaternaria","Puente disulfuro"],0,"La hélice α es una estructura secundaria helicoidal del esqueleto polipeptídico."],
+["Varios segmentos extendidos se alinean uno al lado de otro. ¿Qué observas?",["Hélice α","Lámina β","Enlace glucosídico","Centro activo"],1,"La lámina β se forma por hebras extendidas, paralelas o antiparalelas."],
+["¿Qué interacción estabiliza fundamentalmente las hélices α y las láminas β?",["Puentes de hidrógeno del esqueleto","Enlaces glucosídicos","Puentes disulfuro","Enlaces fosfodiéster"],0,"Los grupos C=O y N–H del esqueleto peptídico forman puentes de hidrógeno."]
+];
+var tertiary=[
+["Dos radicales de cisteína forman un enlace S–S. ¿Cómo se llama?",["Puente disulfuro","Interacción hidrofóbica","Enlace glucosídico","Puente salino"],0,"Dos grupos –SH de cisteína pueden oxidarse para formar un puente disulfuro covalente."],
+["Los radicales R⁺ y R⁻ se atraen. ¿Qué interacción predomina?",["Interacción iónica","Enlace peptídico","Puente disulfuro","Hidrólisis"],0,"Las cargas opuestas se atraen; esta interacción también se denomina puente salino."],
+["Los grupos laterales apolares quedan hacia el interior de la proteína soluble en agua. ¿Por qué?",["Efecto hidrofóbico","Puente disulfuro","Enlace éster","Enlace glucosídico"],0,"Agruparse lejos del agua contribuye a estabilizar el plegamiento."],
+["Un –OH lateral se asocia con otro oxígeno de una cadena lateral. ¿Qué interacción puede darse?",["Enlace fosfodiéster","Puente de hidrógeno","Enlace peptídico","Puente disulfuro"],1,"Algunos radicales con grupos polares establecen puentes de hidrógeno entre sí."]
+];
+var boss=[
+["Una enzima pierde actividad tras calentarse mucho. ¿Qué ha podido ocurrir?",["Se modificó su conformación y centro activo","Se rompieron necesariamente todos los enlaces peptídicos","Se convirtió en un lípido","La temperatura siempre aumenta la actividad"],0,"La desnaturalización puede alterar la conformación y el centro activo sin romper la cadena."],
+["Una proteína se desnaturaliza por pH extremo sin sufrir hidrólisis. ¿Qué estructura suele conservar?",["Toda la estructura cuaternaria","Su estructura primaria","Todos los puentes de hidrógeno","Su actividad biológica"],1,"La secuencia de aminoácidos permanece si no se rompen los enlaces peptídicos."],
+["Si una cisteína esencial se sustituye por serina, puede perderse...",["Un puente disulfuro","La unión entre todas las cadenas del ADN","Un enlace glucosídico","Un fosfato"],0,"La serina no posee el grupo tiol –SH necesario para crear ese puente."],
+["¿Qué proceso sí rompe directamente los enlaces de la estructura primaria?",["Un pequeño cambio de temperatura","La formación de una hélice α","La hidrólisis del enlace peptídico","El efecto hidrofóbico"],2,"La hidrólisis del enlace peptídico fragmenta la cadena polipeptídica."],
+["Una proteína funcional está constituida por cuatro cadenas polipeptídicas asociadas. ¿Qué nivel presenta?",["Solo primario","Solo secundario","Cuaternario","Solo terciario"],2,"La organización de varias cadenas constituye el nivel cuaternario."]
+];
+var state={level:0,step:0,xp:0,hearts:5,picked:[],feedback:"",feedbackType:"",solved:false,name:""};
+try{var saved=JSON.parse(localStorage.getItem("proteinQuestPCE")||"null");if(saved && saved.level>=0 && saved.level<=6){state.level=saved.level;state.step=saved.step||0;state.xp=saved.xp||0;state.hearts=saved.hearts||5;}}catch(e){}
+var app=document.getElementById("app");
+function save(){try{localStorage.setItem("proteinQuestPCE",JSON.stringify({level:state.level,step:state.step,xp:state.xp,hearts:state.hearts}));}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"']/g,function(x){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x];});}
+function button(label,action,value,cls){return '<button class="'+(cls||"answer")+'" data-action="'+action+'" data-value="'+esc(value===undefined?"":value)+'">'+label+'</button>';}
+function beads(a){return '<div class="beads">'+a.map(function(x){return '<span class="bead">'+x+'</span>';}).join('<span class="dash">·</span>')+'</div>';}
+function niceArt(){var l=state.level;if(l===0)return '<div class="chem">H₂N–CHR–COOH &nbsp;+&nbsp; H₂N–CHR′–COOH<br>↓<br>H₂N–CHR–CO–NH–CHR′–COOH + H₂O</div>';if(l===1)return beads(["Gly","Cys","Val","Cys"]);if(l===2)return '<span class="float">🌀</span><span class="float">〰️</span><span class="float">🎗️</span>';if(l===3)return '<span class="float">🧲</span><span class="float">🧬</span><span class="float">💧</span>';if(l===4)return beads(["α","β","α","β"]);return '<span class="float">⚗️</span><span class="float">🧬</span><span class="float">🔬</span>';}
+function question(q){return '<div class="question">'+esc(q[0])+'</div><div class="choices">'+q[1].map(function(x,i){return button(esc(x),"answer",i);}).join("")+'</div>';}
+function content(){var s=state,l=s.level,o="";
+if(l===6){return '<div class="certificate"><div class="level-done">🏆</div><h1>¡Investigación completada!</h1><h2>Diploma de Investigador/a Molecular</h2><p>Has superado las seis misiones de <strong>Protein Quest</strong> y demostrado conocimientos sobre proteínas de Biología Y12 / PCE.</p><h2>'+esc(s.name||"____________________")+'</h2><p>Experiencia acumulada: <strong>'+s.xp+' XP</strong></p><p>Character Education: Curiosity · Resilience · Integrity</p></div><div class="buttons">'+button("🖨️ Imprimir diploma","print","","action primary")+button("🔁 Volver a jugar","reset","","action")+'</div>';}
+if(l===0){var qs=[["Selecciona el grupo que aporta –OH en la condensación.",["Grupo carboxilo (–COOH)","Grupo amino (–NH₂)","Radical R","Carbono α"],0,"El grupo carboxilo pierde –OH."],["¿De qué grupo procede el H que se une al –OH?",["Radical apolar","Grupo amino (–NH₂)","Carbono α","Enlace disulfuro"],1,"El grupo amino pierde H, que junto a –OH forma agua."],["¿Qué molécula se libera al formarse el enlace peptídico?",["CO₂","O₂","H₂O","NH₃"],2,"Es una reacción de condensación: se forma –CO–NH– y se libera H₂O."]];o=question(qs[s.step]);}
+if(l===1){var opts=["Val","Cys","Gly","Cys"];o='<div class="question">Plano del laboratorio: Gly → Cys → Val → Cys. Construye la secuencia de izquierda a derecha (N → C).</div><div class="art" style="min-height:90px;margin:8px 0"><div class="previews">'+[0,1,2,3].map(function(i){return '<span class="slot">'+(s.picked[i]===undefined?"?":opts[s.picked[i]])+'</span>';}).join("")+'</div></div><div class="buttons">'+opts.map(function(x,i){return s.picked.indexOf(i)<0?button(esc(x),"pick",i,"small-btn choice-token"):"";}).join("")+'</div><div class="buttons">'+button("↩ Deshacer","undo","","small-btn")+button("✓ Comprobar cadena","checkseq","","action primary")+'</div>';}
+if(l===2)o=question(secondary[s.step]);
+if(l===3)o=question(tertiary[s.step]);
+if(l===4){o='<div class="question">La hemoglobina adulta habitual (HbA) está formada por <strong>2 cadenas α y 2 cadenas β</strong>. Elige las cuatro subunidades.</div><div class="art" style="min-height:88px;margin:8px 0"><div class="previews">'+[0,1,2,3].map(function(i){return '<span class="slot">'+(s.picked[i]||"?")+'</span>';}).join("")+'</div></div><div class="choices">'+button("Cadena α","sub","α")+button("Cadena β","sub","β")+button("Cadena γ","sub","γ")+button("Una molécula de agua","sub","H₂O")+'</div><div class="buttons">'+button("↩ Quitar última","undo","","small-btn")+button("✓ Ensamblar HbA","checksub","","action primary")+'</div>';}
+if(l===5)o=question(boss[s.step]);
+return '<span class="tag">'+esc(missions[l][2])+'</span><h1>'+esc(missions[l][1])+'</h1><p>'+esc(missions[l][3])+'</p><div class="art">'+niceArt()+'</div><div class="kicker">Reto '+(s.step+1)+' / '+(l===0?3:l===1?1:l===2?3:l===3?4:l===4?1:5)+'</div>'+o+(s.feedback?'<div class="msg '+s.feedbackType+'" role="status">'+s.feedback+'</div>':"")+(s.solved?'<div class="buttons">'+button(s.step+1===(l===0?3:l===1?1:l===2?3:l===3?4:l===4?1:5)?"✨ Terminar misión":"Siguiente reto →","next","","action primary")+'</div>':"")+'<div class="buttons">'+button("💡 Pista","hint","","small-btn")+button("🔄 Reiniciar juego","reset","","small-btn")+'</div>';
+}
+function render(){var s=state;var completed=s.level===6?6:s.level;var side=missions.map(function(m,i){return '<div class="mission-item '+(i<s.level?"done":i===s.level?"current":"")+'"><span class="num">'+(i<s.level?"✓":i>s.level?"🔒":m[0])+'</span><div><b>'+m[1]+'</b><small>'+m[2]+'</small></div></div>';}).join("");app.innerHTML='<header class="top"><div class="logo"><span class="logo-icon">🧬</span><div>PROTEIN QUEST<div class="kicker">Misión Plegamiento · Biología Y12 / PCE</div></div></div><div class="pills"><span class="pill">✨ '+s.xp+' XP</span><span class="pill">❤️ '+s.hearts+' energía</span><span class="pill">🏅 '+completed+'/6</span></div></header><div class="layout"><aside class="panel sidebar"><div class="kicker">Mapa de misiones</div><h2>Tu aventura científica</h2><div class="missions">'+side+'</div><p class="note"><strong>Objetivo:</strong> completa seis misiones para conseguir el diploma.</p></aside><main class="panel stage"><div class="kicker">Progreso de laboratorio</div><div class="bar"><span style="width:'+(completed/6*100)+'%"></span></div>'+content()+'</main><aside class="panel right"><div class="kicker">Cuaderno de campo</div><h2>🔬 Base científica</h2><p>🧪 <strong>Enlace peptídico:</strong> reacción de condensación entre –COOH y –NH₂.</p><p>🧬 <strong>Primaria:</strong> secuencia N → C de aminoácidos.</p><p>🌀 <strong>Secundaria:</strong> hélice α y lámina β, sostenidas por puentes de hidrógeno del esqueleto.</p><p>🧲 <strong>Terciaria:</strong> plegamiento mediante diversas interacciones.</p><p>🩸 <strong>Cuaternaria:</strong> asociación de cadenas.</p><div class="note"><strong>Character Education</strong><p>Curiosity: investiga. Resilience: reintenta. Integrity: razona antes de decidir.</p></div></aside></div><div class="footer">Juego didáctico autocontenido · Sin registro ni conexión · Preparación PCE UNEDasiss</div>';
+}
+function success(reason){state.xp+=20;state.solved=true;state.feedback= '✅ '+esc(reason)+' <strong>+20 XP</strong>';state.feedbackType="good";save();render();}
+function mistake(reason){state.hearts=Math.max(0,state.hearts-1);state.feedback='❌ '+esc(reason)+(state.hearts===0?' Has agotado la energía, pero puedes recuperarla y continuar.':' Vuelve a intentarlo.');state.feedbackType="bad";save();render();}
+function reset(){state={level:0,step:0,xp:0,hearts:5,picked:[],feedback:"",feedbackType:"",solved:false,name:""};save();render();}
+function quizAnswer(v){if(state.solved)return;var l=state.level,q;if(l===0){q=[["",[],0,""],["",[],1,""],["",[],2,""]][state.step];var why=["El –OH procede del grupo carboxilo.","El H procede del grupo amino.","Se libera una molécula de agua (H₂O)."][state.step];if(+v===q[2])success(why);else mistake("Revisa los grupos funcionales implicados en la condensación.");return;}
+q=l===2?secondary[state.step]:l===3?tertiary[state.step]:boss[state.step];if(+v===q[2])success(q[3]);else mistake("Respuesta incorrecta: compara los conceptos y utiliza la pista si lo necesitas.");
+}
+function next(){if(!state.solved)return;var size=[3,1,3,4,1,5][state.level];if(state.step+1===size){state.level++;state.step=0;state.hearts=Math.min(5,state.hearts+1);}else state.step++;state.solved=false;state.feedback="";state.feedbackType="";state.picked=[];save();render();}
+function action(a,v){if(a==="reset"){if(confirm("¿Reiniciar el juego y borrar el progreso guardado en este navegador?"))reset();return;}
+if(a==="print"){var x=prompt("Nombre para el diploma (opcional):",state.name||"");if(x!==null)state.name=x.slice(0,80);render();window.print();return;}
+if(a==="hint"){var hints=["El –COOH pierde –OH y el –NH₂ pierde un H.","Empieza por Gly y lee desde el extremo N al C.","Las dos formas se estabilizan mediante puentes de hidrógeno del esqueleto.","Busca los enlaces S–S, las cargas, los grupos polares y los radicales apolares.","HbA = α₂β₂ (no γ, propio de la hemoglobina fetal).","Desnaturalización no significa necesariamente romper los enlaces peptídicos."];state.feedback="💡 "+hints[state.level];state.feedbackType="";render();return;}
+if(a==="next"){next();return;}
+if(state.solved)return;
+if(a==="answer"){quizAnswer(v);return;}
+if(a==="pick"){if(state.picked.length<4&&state.picked.indexOf(+v)<0)state.picked.push(+v);render();return;}
+if(a==="sub"){if(state.picked.length<4)state.picked.push(v);render();return;}
+if(a==="undo"){state.picked.pop();state.feedback="";render();return;}
+if(a==="checkseq"){if(state.picked.length!==4){state.feedback="Selecciona cuatro aminoácidos antes de comprobar.";state.feedbackType="";render();return;}var order=state.picked.map(function(i){return ["Val","Cys","Gly","Cys"][i];});if(order.join("-")==="Gly-Cys-Val-Cys")success("¡Secuencia correcta! La estructura primaria establece el orden de residuos.");else{state.picked=[];mistake("No coincide con el plano. Reordena la secuencia N → C.");}return;}
+if(a==="checksub"){if(state.picked.length!==4){state.feedback="Selecciona las cuatro subunidades.";state.feedbackType="";render();return;}var aCount=state.picked.filter(function(x){return x==="α";}).length,bCount=state.picked.filter(function(x){return x==="β";}).length;if(aCount===2&&bCount===2)success("¡Has ensamblado HbA! Su estructura cuaternaria es α₂β₂.");else{state.picked=[];mistake("La hemoglobina HbA necesita dos cadenas α y dos β.");}return;}
+}
+app.addEventListener("click",function(e){var b=e.target.closest("button[data-action]");if(b)action(b.dataset.action,b.dataset.value);});
+render();
+})();
+</script>
+</body>
+</html>
